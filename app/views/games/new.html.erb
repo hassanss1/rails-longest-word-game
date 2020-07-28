@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>New Game</h1>
+</div>
+<div class="d-flex container">
+  <% @letters.each do |letter| %>
+  <div class="letter-box">
+    <%= letter %>
+  </div>
+  <% end %>
+</div>
+
+<div class="container mt-4">
+  Guess the biggest word hidden in the combination!
+  <form accept-charset="UTF-8" action="/score" method="POST" class="input-group mb-3 mt-1">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+    <input type="text" name="word" class="form-control" placeholder="Type your word!">
+    <div class="input-group-append">
+      <input type="submit" class="input-group-append btn btn-outline-secondary" value="Play">
+    </div>
+  </form>
+</div>
